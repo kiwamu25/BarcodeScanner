@@ -8,7 +8,40 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid  Background="DimGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <CaptureElement Grid.Row="1" VerticalAlignment="Center" Name="PreviewControl"/>
+        <Border Grid.Row="1" BorderBrush="Green" BorderThickness="3" Height="{x:Bind viewModel.ScanHeight,Mode=OneWay}"/>
+        <Border Grid.Row="1" BorderBrush="Tomato" Height="1" BorderThickness="3"/>
 
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" Text="明るさ"/>
+                <TextBlock VerticalAlignment="Center" Text="{x:Bind viewModel.MaxBrite,Mode=OneWay}"/>
+                <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="閾値"/>
+                <TextBlock VerticalAlignment="Center" Text="{x:Bind viewModel.Threshold ,Mode=OneWay}"/>
+                <TextBlock Margin="10,0" VerticalAlignment="Center" Text="入力値"/>
+                <TextBox IsReadOnly="True" Text="{x:Bind viewModel.ResultText,Mode=OneWay}" MinWidth="200"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">
+            <StackPanel>
+                <Border BorderBrush="Gray" BorderThickness="3">
+                    <Image Source="{x:Bind viewModel.ScanImage ,Mode=OneWay}" />
+                </Border>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Slider Width="200" Maximum="1" Minimum="0" StepFrequency="0.05" Value="{x:Bind viewModel.Range ,Mode=TwoWay}"/>
+        </StackPanel>
+        
     </Grid>
 </Page>
