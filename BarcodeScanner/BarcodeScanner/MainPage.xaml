@@ -34,7 +34,7 @@
         <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">
             <StackPanel>
                 <Border BorderBrush="Gray" BorderThickness="3">
-                    <Image Source="{x:Bind viewModel.ScanImage ,Mode=OneWay}" />
+                    <Image Opacity="0.6" Source="{x:Bind viewModel.ScanImage ,Mode=OneWay}" />
                 </Border>
             </StackPanel>
         </StackPanel>
